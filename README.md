@@ -1,0 +1,1 @@
+This is the repository for my Study Abroad in Berlin trip
