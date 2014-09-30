@@ -16,7 +16,7 @@ class MarkerFilter(django_filters.FilterSet):
 
     class Meta:
         model = models.Student
-        fields = ['name','major']
+        fields = ['id', 'first_name', 'last_name', 'major']
 
 class UserCollection(generics.ListAPIView):
     """

@@ -6,5 +6,5 @@ from rest_framework_gis import serializers as geoserializers
 class UnitSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.Student
-        fields = ('name','major')
+        fields = ('id', 'first_name', 'last_name', 'major')
 
