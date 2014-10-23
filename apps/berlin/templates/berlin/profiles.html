@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Study Abroad{% endblock %}
+
+{% block content %}
+<h1>
+    List all the profiles here
+</h1>
+
+{% for student in Student %}
+<li>{{ student.first_name}}</li>
+
+{% endfor %}
+
+
+{% endblock %}

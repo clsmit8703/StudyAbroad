@@ -25,3 +25,16 @@ class UserCollection(generics.ListAPIView):
     queryset = models.Student.objects.all()
     serializer_class = serializers.UnitSerializer
     filter_class = MarkerFilter
+
+
+class MapFilter(django_filters.FilterSet):
+    id = IntegerListFilter(name='id', lookup_type='in')
+
+    class Meta:
+        model = models.Map
+        fields =['id','geom']
+
+class CountyCollection(generics.ListAPIView):
+    queryset = models.Map.objects.all()
+    serializer_class = serializers.MapSerializer
+    filter_class = MapFilter

@@ -8,3 +8,8 @@ class UnitSerializer(serializers.HyperlinkedModelSerializer):
         model = models.Student
         fields = ('id', 'first_name', 'last_name', 'major')
 
+class MapSerializer(geoserializers.GeoFeatureModelSerializer):
+    class Meta:
+        model = models.Map
+        geo_field = 'geom'
+        fields = ('id','name')
