@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
+from django.contrib.gis import admin
+admin.autodiscover()
 
 extra_patterns = patterns('',
                           url(r'^', include('apps.berlin.api_urls'), name='berlin'),

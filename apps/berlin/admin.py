@@ -8,4 +8,4 @@ class MapAdmin(admin.OSMGeoAdmin):
 
 # Register your models here.
 admin.site.register(models.Student)
-admin.site.register(models.Map)
+admin.site.register(models.Map, admin.OSMGeoAdmin)

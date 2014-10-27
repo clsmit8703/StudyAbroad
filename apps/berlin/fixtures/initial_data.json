@@ -1,4 +1,9 @@
-[{"id": 8, "first_name": "Corryn", "last_name": "Smith", "major": "Applied Environment and Spatial Analysis"},
+[
+    {
+        "model": "berlin.student",
+        "fields": {
+            "id": 8
+        }, "first_name": "Corryn", "last_name": "Smith", "major": "Applied Environment and Spatial Analysis"},
     {"id": 9, "first_name": "James", "last_name": "Berry", "major": "Business"},
     {"id": 10, "first_name": "Victoria", "last_name": "Bretschy", "major": "General Studies"},
     {"id": 11, "first_name": "Aaron", "last_name": "Chase", "major": "General Studies"},
@@ -28,3 +33,4 @@
     {"id": 35, "first_name": "Andy", "last_name": "Zipp", "major": "Geography"},
     {"id": 36, "first_name": "Mark", "last_name": "Iaderosa", "major": "History"}]
 
+}

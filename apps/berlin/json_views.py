@@ -23,7 +23,7 @@ class UserCollection(generics.ListAPIView):
     API endpoint that allows users to be viewed or edited.
     """
     queryset = models.Student.objects.all()
-    serializer_class = serializers.UnitSerializer
+    serializer_class = serializers.StudentSerializer
     filter_class = MarkerFilter
 
 

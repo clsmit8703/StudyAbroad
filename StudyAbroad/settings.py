@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'StudyAbroad.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'berlin',
+        'NAME': 'berlin1',
         'USER': 'postgres',
         'PASSWORD': 'geografio',
         'HOST': 'localhost',
