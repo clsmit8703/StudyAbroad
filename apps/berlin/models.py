@@ -31,6 +31,6 @@ class Map(models.Model):
         return "{}".format(self.name)
 
     def save(self, *args, **kwargs):
-        self.Latitude  = self.geom.y
-        self.Longitude = self.geom.x
+        self.geom.y = self.Latitude
+        self.geom.x = self.Longitude
         super(Map, self).save(*args, **kwargs)
