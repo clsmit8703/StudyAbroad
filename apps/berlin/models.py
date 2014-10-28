@@ -15,7 +15,7 @@ class Student(models.Model):
 class Professors(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    school= models.CharField(max_length=255)
+    school = models.CharField(max_length=255)
     AM_class = models.CharField(max_length=255)
     PM_class = models.CharField(max_length=255)
 

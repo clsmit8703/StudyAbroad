@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
+from apps.berlin import  models
 
 class MainView(generic.TemplateView):
     """Loads the main page"""
@@ -8,5 +9,16 @@ class MainView(generic.TemplateView):
 class AboutUsView(generic.TemplateView):
     template_name = 'berlin/aboutus.html'
 
-class ProfilesView(generic.TemplateView):
+class ProfilesView(generic.ListView):
+    model = models.Student
     template_name = 'berlin/profiles.html'
+
+class ProfilesDetailView(generic.TemplateView):
+    template_name = "berlin/student_detail.html"
+
+    def get_context_data(self, **kwargs):
+        """Adding images to context"""
+        context = super(ProfilesDetailView, self).get_context_data()
+        data = models.Student.objects.filter(pk=kwargs['pk']).first()
+        context['campus'] = data
+        return context

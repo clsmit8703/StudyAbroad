@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^$', views.MainView.as_view()),
     url(r'^aboutus$', views.AboutUsView.as_view()),
     url(r'^profiles$', views.ProfilesView.as_view()),
+    url(r'^profiles/(?P<pk>\d+)/$', views.ProfilesDetailView.as_view(), name='student_dview'),
     )
