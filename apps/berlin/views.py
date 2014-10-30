@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from apps.berlin import  models
+from apps.berlin import models
 
 class MainView(generic.TemplateView):
     """Loads the main page"""
@@ -20,5 +20,9 @@ class ProfilesDetailView(generic.TemplateView):
         """Adding images to context"""
         context = super(ProfilesDetailView, self).get_context_data()
         data = models.Student.objects.filter(pk=kwargs['pk']).first()
-        context['campus'] = data
+        context['student'] = data
         return context
+
+class Popular_PlacesView(generic.TemplateView):
+    """Loads the map page"""
+    template_name = 'berlin/popular_places.html'

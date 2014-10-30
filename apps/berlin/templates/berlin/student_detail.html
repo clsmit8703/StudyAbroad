@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{student.first_name}} {{student.last_name}}</h1>
-    <p>{{ student.major  }}</p>
+<h1>
+{{ student.first_name }}  {{ student.last_name }}
+</h1>
+
+    <p>Major: {{ student.major }}</p>
+    <p>School: {{ student.school }}</p>
+    <p> Classes taken in Berlin
+    <li>AM: {{ student.AM_class }}</li>
+    <li>PM: {{ student.PM_class }}</li></p>
 
 {% endblock %}
