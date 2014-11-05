@@ -18,7 +18,7 @@ class MarkerFilter(django_filters.FilterSet):
         model = models.Student
         fields = ['id', 'first_name', 'last_name', 'major', 'school', 'AM_class','PM_class']
 
-class UserCollection(generics.ListAPIView):
+class StudentCollection(generics.ListAPIView):
     """
     API endpoint that allows users to be viewed or edited.
     """
@@ -32,9 +32,26 @@ class MapFilter(django_filters.FilterSet):
 
     class Meta:
         model = models.Map
-        fields =['id','geom']
+        fields = ['id','geom']
 
-class CountyCollection(generics.ListAPIView):
+class MapCollection(generics.ListAPIView):
     queryset = models.Map.objects.all()
     serializer_class = serializers.MapSerializer
     filter_class = MapFilter
+
+
+class GeorgiaFilter(django_filters.FilterSet):
+    """Json_view for Georgia Model"""
+    id = IntegerListFilter(name='id', lookup_type='in')
+
+    class Meta:
+        model = models.Georgia
+        fields = ['name','lat']
+
+class GeorgiaCollection(generics.ListAPIView):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = models.Georgia.objects.all()
+    serializer_class = serializers.GeorgiaSerializer
+    filter_class = GeorgiaFilter

@@ -26,3 +26,7 @@ class ProfilesDetailView(generic.TemplateView):
 class Popular_PlacesView(generic.TemplateView):
     """Loads the map page"""
     template_name = 'berlin/popular_places.html'
+
+class GeorgiaView(generic.TemplateView):
+    """Loads the map page"""
+    template_name = 'berlin/georgia.html'

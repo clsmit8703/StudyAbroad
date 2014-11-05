@@ -4,5 +4,6 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'gisc2.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^berlin$', json_views.UserCollection.as_view(), name='berlin'),
+    url(r'^berlin$', json_views.StudentCollection.as_view(), name='berlin'),
+    url(r'^georgia$', json_views.GeorgiaCollection.as_view(), name='georgia'),
     )

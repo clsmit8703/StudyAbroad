@@ -8,8 +8,16 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
         model = models.Student
         fields = ('id', 'first_name', 'last_name', 'major', 'school','AM_class','PM_class')
 
+
 class MapSerializer(geoserializers.GeoFeatureModelSerializer):
     class Meta:
         model = models.Map
         geo_field = 'geom'
         fields = ('id','name')
+
+
+class GeorgiaSerializer(geoserializers.GeoFeatureModelSerializer):
+    class Meta:
+        model = models.Georgia
+        geo_field = 'mpoly'
+        fields = ('name','lat')
