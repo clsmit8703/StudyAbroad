@@ -27,17 +27,17 @@ class StudentCollection(generics.ListAPIView):
     filter_class = MarkerFilter
 
 
-class MapFilter(django_filters.FilterSet):
+class Popular_PlacesFilter(django_filters.FilterSet):
     id = IntegerListFilter(name='id', lookup_type='in')
 
     class Meta:
-        model = models.Map
+        model = models.Popular_Places
         fields = ['id','geom']
 
-class MapCollection(generics.ListAPIView):
-    queryset = models.Map.objects.all()
-    serializer_class = serializers.MapSerializer
-    filter_class = MapFilter
+class Popular_PlacesCollection(generics.ListAPIView):
+    queryset = models.Popular_Places.objects.all()
+    serializer_class = serializers.Popular_PlacesSerializer
+    filter_class = Popular_PlacesFilter
 
 
 class GeorgiaFilter(django_filters.FilterSet):

@@ -9,9 +9,9 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'first_name', 'last_name', 'major', 'school','AM_class','PM_class')
 
 
-class MapSerializer(geoserializers.GeoFeatureModelSerializer):
+class Popular_PlacesSerializer(geoserializers.GeoFeatureModelSerializer):
     class Meta:
-        model = models.Map
+        model = models.Popular_Places
         geo_field = 'geom'
         fields = ('id','name')
 

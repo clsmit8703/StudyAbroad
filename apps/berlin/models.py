@@ -22,7 +22,7 @@ class Professors(models.Model):
     PM_class = models.CharField(max_length=255)
 
 
-class Map(models.Model):
+class Popular_Places(models.Model):
     """Represents a point on the map"""
     name = models.CharField(max_length=60)
     geom = models.PointField(srid=4326)
