@@ -37,8 +37,24 @@
 								</li>
 								<li>
 									<a href="/georgia">Georgia Schools</a>
-								</li>
-							</ul>
+								</li></ul></li>
+                             <ul class="nav navbar-nav navbar-right">
+                            {% if user.username %}
+                                <li><a href="/accounts/logout/">Log Out</a></li>
+                            {% else %}
+                                <li><a href="/accounts/login/">Login</a></li>
+                                <li><a href="/accounts/register/">Register</a></li>
+                            {% endif %}
+
+                            {% if user.is_staff %}
+                                <li><a href="/admin/">Admin</a></li>
+                            {% endif %}
+                            </ul>
+
+					</ul>
+				</div>
+
+			</nav>
 					</ul>
 				</div>
 			</nav>

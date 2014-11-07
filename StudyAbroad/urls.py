@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('apps.berlin.urls', namespace='berlin')),
     url(r'api/v1/', include('apps.berlin.api_urls', namespace='api')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
 )
