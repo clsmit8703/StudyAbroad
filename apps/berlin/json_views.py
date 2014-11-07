@@ -28,7 +28,7 @@ class StudentCollection(generics.ListAPIView):
 
 
 class Popular_PlacesFilter(django_filters.FilterSet):
-    id = IntegerListFilter(name='id', lookup_type='in')
+    id = IntegerListFilter(name='school', lookup_type='in')
 
     class Meta:
         model = models.Popular_Places
@@ -42,11 +42,11 @@ class Popular_PlacesCollection(generics.ListAPIView):
 
 class GeorgiaFilter(django_filters.FilterSet):
     """Json_view for Georgia Model"""
-    id = IntegerListFilter(name='id', lookup_type='in')
+    id = IntegerListFilter(name='name', lookup_type='in')
 
     class Meta:
         model = models.Georgia
-        fields = ['name','lat']
+        fields = ['name','num_studen']
 
 class GeorgiaCollection(generics.ListAPIView):
     """

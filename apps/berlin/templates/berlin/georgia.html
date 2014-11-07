@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 <html>
-{% block title %}Popular Places{% endblock %}
+{% block title %}Georgia Map{% endblock %}
 {% block moreheader %}
 <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel="stylesheet"/>
@@ -12,34 +12,39 @@
 {% block content %}
 <div class="row clearfix">
     <div class= "col-md-12 column">
-    <div id="map"></div>
-    </div>
-    </div>
+    <div id="map">
 {%  endblock %}
 {% block morescripts %}
     <script>
-    var map= L.mapbox.map('map','clsmit8703.k4pjhd7o');
-    var ap_style = {
-            color:"red",
-            weight: 2,
+  var ouricon = {
+            radius: 6,
+            fillColor: "#ff4000",
+            color: "#8b23007",
+            weight: 1,
             opacity: 1,
-            fillOpacity: 0
-            };
+            fillOpacity: 0.7
+    };
 
-{#    $.getJSON("{% url 'api:counties' %}", function (data) {#}
-{#        L.geoJson(data, {style: county_style,#}
-{#            onEachFeature: function(feature, layer){#}
-{#                (function(layer,properties) {#}
-{#                    layer.on("click", function (e) {#}
-{#                        var popup = L.popup().setLatLng(e.latlng)#}
-{#                                .setContent('<a href="http://www.cnn.com">' + properties.name + '</a>')#}
-{#                                .openOn(map);#}
-{#                    });#}
-{#                }) (layer, feature.properties);#}
-{#    }}).addTo(map);#}
-{#    });#}
+    var map= L.mapbox.map('map','clsmit8703.k4pjhd7o');
 
+
+      $.getJSON("{% url 'api:georgia' %}", function (data) {
+        L.geoJson(data, {pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, ouricon);
+        },
+            onEachFeature: function(feature, layer){
+                (function(layer,properties) {
+                    layer.on("click", function (e) {
+                        var popup = L.popup().setLatLng(e.latlng)
+                                .setContent('<a href="/profiles">' + "Number of Students: " +properties.num_studen +'</a>')
+                                .openOn(map);
+                    });
+                }) (layer, feature.properties);
+    }}).addTo(map);
+    });
     </script>
 {% endblock %}
 
 </html>
+
+

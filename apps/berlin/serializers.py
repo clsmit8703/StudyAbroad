@@ -20,4 +20,4 @@ class GeorgiaSerializer(geoserializers.GeoFeatureModelSerializer):
     class Meta:
         model = models.Georgia
         geo_field = 'mpoly'
-        fields = ('name','lat')
+        fields = ('name','num_studen')
