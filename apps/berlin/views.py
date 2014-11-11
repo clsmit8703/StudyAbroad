@@ -23,10 +23,24 @@ class ProfilesDetailView(generic.TemplateView):
         context['student'] = data
         return context
 
-class Popular_PlacesView(generic.TemplateView):
-    """Loads the map page"""
+class Popular_PlacesView(generic.ListView):
+    model = models.Popular_Places
     template_name = 'berlin/popular_places.html'
+
+class Popular_Places_MapView(generic.TemplateView):
+    """Loads the map page"""
+    template_name = 'berlin/popular_places_map.html'
 
 class GeorgiaView(generic.TemplateView):
     """Loads the map page"""
     template_name = 'berlin/georgia.html'
+
+class Popular_PlacesDetailView(generic.TemplateView):
+    template_name = "berlin/popular_places_detail.html"
+
+    def get_context_data(self, **kwargs):
+        """Adding images to context"""
+        context = super(Popular_PlacesDetailView, self).get_context_data()
+        data = models.Popular_Places.objects.filter(pk=kwargs['pk']).first()
+        context['place'] = data
+        return context
