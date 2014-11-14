@@ -36,7 +36,7 @@
                 (function(layer,properties) {
                     layer.on("click", function (e) {
                         var popup = L.popup().setLatLng(e.latlng)
-                                .setContent('<a href="/profiles">' + "Number of Students: " +properties.num_studen +'</a>')
+                                .setContent('<a href="/profiles">' + properties.name + ", " +properties.num_studen +'</a>')
                                 .openOn(map);
                     });
                 }) (layer, feature.properties);

@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-
+from django.conf import settings
 from apps.berlin import views
 
 
@@ -16,3 +16,9 @@ urlpatterns = patterns('',
     url(r'^popular_places_map$', views.Popular_Places_MapView.as_view()),
     url(r'^georgia$', views.GeorgiaView.as_view()),
     )
+
+if settings.DEBUG:
+    # static files (images, css, javascript, etc.)
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}))

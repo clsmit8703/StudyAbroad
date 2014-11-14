@@ -10,3 +10,5 @@ class MapAdmin(admin.OSMGeoAdmin):
 admin.site.register(models.Student)
 admin.site.register(models.Popular_Places, admin.OSMGeoAdmin)
 admin.site.register(models.Georgia, admin.OSMGeoAdmin)
+admin.site.register(models.Images)
+

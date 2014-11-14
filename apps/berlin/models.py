@@ -1,4 +1,7 @@
 from django.contrib.gis.db import models
+from django.core.files.storage import FileSystemStorage
+
+fs = FileSystemStorage(location='/media/photos')
 
 
 class Student(models.Model):
@@ -25,10 +28,13 @@ class Professors(models.Model):
 class Popular_Places(models.Model):
     """Represents a point on the map"""
     name = models.CharField(max_length=60)
+    desc = models.CharField(max_length=100)
+    type = models.CharField(max_length=30)
     geom = models.PointField(srid=4326)
     objects = models.GeoManager()
     Latitude = models.DecimalField(max_digits=10, decimal_places=6)
     Longitude = models.DecimalField(max_digits=10, decimal_places=6)
+
 
     def __str__(self):
         return "{}".format(self.name)
@@ -36,7 +42,17 @@ class Popular_Places(models.Model):
     def save(self, *args, **kwargs):
         self.geom.y = self.Latitude
         self.geom.x = self.Longitude
-        super(Map, self).save(*args, **kwargs)
+        super(Popular_Places, self).save(*args, **kwargs)
+
+class Images(models.Model):
+    """Pics model."""
+    name = models.CharField(max_length=100)
+    place = models.ForeignKey(Popular_Places)
+    photo = models.ImageField(storage =fs)
+
+    def __str__(self):
+        return self.name
+
 
 
 class Georgia(models.Model):

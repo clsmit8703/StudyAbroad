@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <center>
 <h1>
-Name: {{ place.name }}
+{{ place.name }}
 </h1>
     <div class="col-md-4">
-    <p>Geom: {{ place.geom }}
-    <li>Lat: {{ place.Latitude}}</li>
-    <li>Long:{{ place.Longitude }}</li>
-    </p>
+        <p>Description: {{ place.desc }} </p>
+        <p>Type: {{ place.type }} </p>
+        <p>Lat: {{ place.Latitude}}</p>
+        <p>Long:{{ place.Longitude }}</p>
+         <p><img src="/media/{{ place.name }}.jpg"></p>
+        </center>
     </div>
-
 
 {% endblock %}
