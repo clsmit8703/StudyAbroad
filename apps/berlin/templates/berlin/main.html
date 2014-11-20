@@ -9,23 +9,31 @@
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<div class="jumbotron">
+                {% if user.username %}
+                				<h1>
+					Hallo, {{ user.username }}!
+				</h1>
+				<p>Wishing you were back in Berlin? Missing those €1.35 Brats from Alexanderplatz?  You can reminisce all of those good times here!
+				</p>
+				<p>
+					<center><a class="btn btn-primary btn-large" href="/popular_places_map">Berlin Map</a></center>
+				</p>
+                {% else %}
 				<h1>
 					Guten tag!
 				</h1>
 				<p>This page is an online scrapbook of the European Council's Berlin 2014 Summer Trip.  On this site,
                     you can explore maps, pictures, and all the friends we made on the trip.  Be sure to sign up
                     for an account to gain full access to this site.
-
-{#					<br>#}
-{#                   <center> <img alt="140x140" src= "{% static "berlin/berliner.png" %}" />#}
-{#                    <img alt="140x140" src="{% static "berlin/tv.png" %}" class="img-circle" />#}
-{#                    <img alt="140x140" src="http://lorempixel.com/140/140/" class="img-circle" /></center>#}
-
 				</p>
 				<p>
-					<center><a class="btn btn-primary btn-large" href="#">Learn more</a></center>
+					<center><a class="btn btn-primary btn-large" href="/accounts/register">Let's Get Started!</a></center>
 				</p>
 			</div>
+                {% endif %}
                         <a href="/accounts/login"<button class="btn btn-lg btn-success btn-block span3" type="submit">Sign in</button>
 
 {% endblock %}
+
+{% if user.username %}
+                            {% endif %}
