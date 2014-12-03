@@ -1,6 +1,7 @@
-from django.shortcuts import render
 from django.views import generic
 from apps.berlin import models
+from apps.berlin.forms import Popular_PlacesForm
+
 
 class MainView(generic.TemplateView):
     """Loads the main page"""
@@ -44,3 +45,8 @@ class Popular_PlacesDetailView(generic.TemplateView):
         data = models.Popular_Places.objects.filter(pk=kwargs['pk']).first()
         context['place'] = data
         return context
+
+class Popular_PlacesCreate(generic.edit.FormView):
+    template_name = 'berlin/create.html'
+    form_class = Popular_PlacesForm
+    success_url = '/'

@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^popular_places/(?P<pk>\d+)/$', views.Popular_PlacesDetailView.as_view(), name='popular_places_dview'),
     url(r'^popular_places_map$', views.Popular_Places_MapView.as_view()),
     url(r'^georgia$', views.GeorgiaView.as_view()),
+    url(r'^create$', views.Popular_PlacesCreate.as_view()),
     )
 
 if settings.DEBUG:

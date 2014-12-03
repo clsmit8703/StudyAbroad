@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <center>
+
 <h1>
+<center>
 {{ place.name }}
+    </center>
 </h1>
-    <div class="col-md-4">
+    <div>
+    <center>
         <p>Description: {{ place.desc }} </p>
         <p>Type: {{ place.type }} </p>
         <p>Lat: {{ place.Latitude}}</p>
