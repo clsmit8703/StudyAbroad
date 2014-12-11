@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+<html>
+{% block title %}Georgia Map{% endblock %}
+{% block moreheader %}
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel="stylesheet"/>
+<style> #map {position:absolute; top:50px; right:10px;left:6px;bottom:0;width:100%;}</style>
+{% endblock %}
+
+{% block content %}
+<div class="row clearfix">
+    <div class= "col-md-12 column">
+    <div id="map">
+{%  endblock %}
+{% block morescripts %}
+    <script>
+  var ouricon = {
+            radius: 6,
+            fillColor: "#ff4000",
+            color: "#8b23007",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.7
+    };
+
+    var map= L.mapbox.map('map','clsmit8703.k4pjhd7o');
+
+
+      $.getJSON("{% url 'api:georgia' %}", function (data) {
+        L.geoJson(data, {pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, ouricon);
+        },
+            onEachFeature: function(feature, layer){
+                (function(layer,properties) {
+                    layer.on("click", function (e) {
+                        var popup = L.popup().setLatLng(e.latlng)
+                                .setContent('<a href="/profiles">' + properties.name + ", " +properties.num_studen +'</a>')
+                                .openOn(map);
+                    });
+                }) (layer, feature.properties);
+    }}).addTo(map);
+    });
+    </script>
+{% endblock %}
+
+</html>
+
+

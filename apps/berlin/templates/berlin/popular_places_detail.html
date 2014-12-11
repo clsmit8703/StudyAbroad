@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>
+<center>
+{{ place.name }}
+    </center>
+</h1>
+    <div>
+    <center>
+        <p>Description: {{ place.desc }} </p>
+        <p>Type: {{ place.type }} </p>
+        <p>Lat: {{ place.Latitude}}</p>
+        <p>Long:{{ place.Longitude }}</p>
+         <p><img src="/media/{{ place.name }}.jpg"></p>
+        </center>
+    </div>
+
+{% endblock %}

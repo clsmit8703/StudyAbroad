@@ -37,8 +37,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'rest_framework',
+    'rest_framework_gis',
     'bootstrap',
+    'registration',
     'apps.berlin',
 )
 
@@ -64,7 +67,7 @@ WSGI_APPLICATION = 'StudyAbroad.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'berlin',
+        'NAME': 'berlin1',
         'USER': 'postgres',
         'PASSWORD': 'geografio',
         'HOST': 'localhost',
@@ -90,7 +93,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
+MEDIA_ROOT = 'apps/berlin/media/images/'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR,  'templates'),
 )
@@ -108,3 +113,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+LOGIN_REDIRECT_URL = '/'

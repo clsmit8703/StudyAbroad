@@ -1,0 +1,85 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{% block title %}Study Abroad Trip{% endblock %}</title>
+     <link href = "{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+         <link rel="stylesheet" type="text/css" href={% static 'navbar.css' %}>
+{% block moreheader %}
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
+    <link href="https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css" rel='stylesheet'/>
+{% endblock %}
+
+</head>
+<body>
+<div id='map'></div>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="/">Home</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="/aboutus">About Us</a>
+						</li>
+                    {% if user.username %}
+						<li>
+							<a href="/profiles">Browse Profiles</a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Maps<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="/popular_places_map">Popular Places</a>
+								</li>
+								<li>
+									<a href="/georgia">Georgia Schools</a>
+								</li></ul></li>
+                        {% else %}
+                    {% endif %}
+                             <ul class="nav navbar-nav navbar-right">
+                            {% if user.username %}
+                                <li><a href="/accounts/logout/">Log Out</a></li>
+                            {% else %}
+                                <li><a href="/accounts/login/">Login</a></li>
+                                <li><a href="/accounts/register/">Register</a></li>
+                            {% endif %}
+
+                            {% if user.is_staff %}
+                                <li><a href="/admin/">Admin</a></li>
+                            {% endif %}
+                            </ul>
+
+					</ul>
+				</div>
+
+			</nav>
+					</ul>
+				</div>
+			</nav>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% block content %}{% endblock %}
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src=" {% static "bootstrap/js/bootstrap.min.js" %}"></script>
+{% block morescripts %}
+
+        <style>
+        var map = L.mapbox.map('map','clsmit8703','k2ppg4ng',{maxZoom: 1});
+        </style>
+{% endblock %}
+</body>
+</html>
+
+

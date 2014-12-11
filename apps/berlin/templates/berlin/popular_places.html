@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Study Abroad{% endblock %}
+
+{% block content %}
+<h1>
+Popular Places
+</h1>
+<ul>
+{% for place in object_list %}
+<li><a href="{%  url 'berlin:popular_places_dview' place.pk %}">{{ place.name }}</a></li>
+
+{% endfor %}
+</ul>
+
+
+{% endblock %}

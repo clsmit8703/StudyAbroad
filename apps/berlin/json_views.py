@@ -16,12 +16,42 @@ class MarkerFilter(django_filters.FilterSet):
 
     class Meta:
         model = models.Student
-        fields = ['id', 'first_name', 'last_name', 'major']
+        fields = ['id', 'first_name', 'last_name', 'major', 'school', 'AM_class','PM_class']
 
-class UserCollection(generics.ListAPIView):
+class StudentCollection(generics.ListAPIView):
     """
     API endpoint that allows users to be viewed or edited.
     """
     queryset = models.Student.objects.all()
-    serializer_class = serializers.UnitSerializer
+    serializer_class = serializers.StudentSerializer
     filter_class = MarkerFilter
+
+
+class Popular_PlacesFilter(django_filters.FilterSet):
+    id = IntegerListFilter(name='school', lookup_type='in')
+
+    class Meta:
+        model = models.Popular_Places
+        fields = ['id','geom']
+
+class Popular_PlacesCollection(generics.ListAPIView):
+    queryset = models.Popular_Places.objects.all()
+    serializer_class = serializers.Popular_PlacesSerializer
+    filter_class = Popular_PlacesFilter
+
+
+class GeorgiaFilter(django_filters.FilterSet):
+    """Json_view for Georgia Model"""
+    id = IntegerListFilter(name='name', lookup_type='in')
+
+    class Meta:
+        model = models.Georgia
+        fields = ['name','num_studen']
+
+class GeorgiaCollection(generics.ListAPIView):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = models.Georgia.objects.all()
+    serializer_class = serializers.GeorgiaSerializer
+    filter_class = GeorgiaFilter
